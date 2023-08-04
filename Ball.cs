@@ -4,6 +4,7 @@ public class Ball : MonoBehaviour
 {
     Rigidbody2D rb;
     public float bounceForce;
+    bool gameStarted = false;
 
     void Awake()
     {
@@ -12,7 +13,8 @@ public class Ball : MonoBehaviour
 
     void Update()
     {
-        if (Input.anyKeyDown) {
+        if (Input.anyKeyDown && !gameStarted) {
+            gameStarted = true;
             StartBounce();
         }
     }
@@ -26,6 +28,8 @@ public class Ball : MonoBehaviour
     void OnCollisionEnter2D(Collision2D other) {
         if (other.gameObject.tag == "FallCheck") {
             GameManager.instance.Restart();
+        } else if (other.gameObject.tag == "Paddle") {
+            GameManager.instance.ScoreUp();
         }
     }
 }
