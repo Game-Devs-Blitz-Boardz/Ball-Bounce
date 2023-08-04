@@ -11,11 +11,6 @@ public class Paddle : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
     }
 
-    void Update()
-    {
-        
-    }
-
     void FixedUpdate() {
         TouchMove();
     }

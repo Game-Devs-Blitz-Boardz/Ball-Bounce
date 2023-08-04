@@ -10,11 +10,6 @@ public class Ball : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
     }
 
-    void Start()
-    {
-        
-    }
-
     void Update()
     {
         if (Input.anyKeyDown) {
@@ -26,5 +21,11 @@ public class Ball : MonoBehaviour
         Vector2 randomDirection = new Vector2(Random.Range(-1, 1), 1);
 
         rb.AddForce(randomDirection * bounceForce, ForceMode2D.Impulse);
+    }
+
+    void OnCollisionEnter2D(Collision2D other) {
+        if (other.gameObject.tag == "FallCheck") {
+            GameManager.instance.Restart();
+        }
     }
 }
