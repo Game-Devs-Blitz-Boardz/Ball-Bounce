@@ -4,7 +4,6 @@ public class Ball : MonoBehaviour
 {
     Rigidbody2D rb;
     public float bounceForce;
-    bool gameStarted = false;
 
     void Awake()
     {
@@ -13,8 +12,8 @@ public class Ball : MonoBehaviour
 
     void Update()
     {
-        if (Input.anyKeyDown && !gameStarted) {
-            gameStarted = true;
+        if (Input.anyKeyDown && !GameManager.instance.gameStarted) {
+            GameManager.instance.gameStarted = true;
             StartBounce();
         }
     }

@@ -9,9 +9,15 @@ public class GameManager : MonoBehaviour
 
     public TextMeshProUGUI scoreText;
     public int score;
+    public bool gameStarted = false;
+    public GameObject panel;
 
     void Awake() {
         instance = this;
+    }
+
+    void Update() {
+        panel.SetActive(!gameStarted);
     }
 
     public void Restart() {
